@@ -1,23 +1,28 @@
 package com.functionalprograms;
 
-import java.util.Scanner;
-
 public class FunctionalPrograms {
-    public static void main(String[] args) {
-        int n[][] = new int[3][4];
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter 12 numbers");
+    static void findTriplets(int[] array, int length) {
+        boolean found = false;
+        for (int i = 0; i < length - 2; i++) {
+            for (int j = i + 1; j < length - 1; j++) {
+                for (int k = j + 1; k < length; k++) {
+                    if (array[i] + array[j] + array[k] == 0) {
+                        System.out.println(array[i] + " " + array[j] + " " + array[k]);
+                        found = true;
+                    }
+                }
+            }
+        }
+        if (found == false)
+            System.out.println(" Triplet not exist ");
+        else {
+            System.out.println("Triplet found");
+        }
+    }
 
-        for (int i = 0; i < 3; i++) {
-            for(int j =0; j<4; j++){
-                n[i][j] = sc.nextInt();
-            }
-        }
-        for (int i =0; i<3; i++){
-            for (int j=0; j<4; j++){
-                System.out.print("["+i+"]["+j+"] " + n[i][j] + " ");
-            }
-            System.out.println();
-        }
+    public static void main(String[] args) {
+        int arr[] = {0,-1, 2, -3, 1};
+        int length = arr.length;
+        findTriplets(arr, length);
     }
 }
