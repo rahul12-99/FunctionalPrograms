@@ -3,24 +3,20 @@ package com.functionalprograms;
 import java.util.Scanner;
 
 public class FunctionalPrograms {
-    public static void main(String[] Strings) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the value of a: ");
-        double a = scanner.nextDouble();
-        System.out.println("Enter the value of b: ");
-        double b = scanner.nextDouble();
-        System.out.println("Enter the value of c: ");
-        double c = scanner.nextDouble();
-        double discriminant = b * b - 4.0 * a * c;
-        if (discriminant > 0.0) {
-            double r1 = (-b + Math.pow(discriminant, 0.5)) / (2.0 * a);
-            double r2 = (-b - Math.pow(discriminant, 0.5)) / (2.0 * a);
-            System.out.println("The roots are " + r1 + " and " + r2);
-        } else if (discriminant == 0.0) {
-            double r1 = -b / (2.0 * a);
-            System.out.println("The root is " + r1);
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter temperature above 50");
+        int temp = sc.nextInt();
+        System.out.println("Enter wind speed above 120 less than 3");
+        int speed = sc.nextInt();
+        windChill(temp,speed);
+    }
+    public static void windChill(int temp, int speed) {
+        if ((temp > 50) && (speed > 120 || speed < 3)) {
+            double windChill = 35.74 + 0.6215 * temp + (0.4275 * temp - 35.75) * Math.pow(speed, 0.16);
+            System.out.println("wind chill : " + windChill);
         } else {
-            System.out.println("Roots are not real.");
+            System.out.println("The formula is not valid");
         }
     }
 }
